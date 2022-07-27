@@ -1,0 +1,42 @@
+package MovingWindow;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class JFrameMoving {
+
+	JFrame frame;
+	private int width = 100;
+	private int height = 100;
+
+	public JFrameMoving() {
+		initialize();
+	}
+  
+	private void randomize() {
+		width = (int) (Math.random()*1000);
+		height = (int) (Math.random()*1000);
+	}
+	private void initialize() {
+
+		frame = new JFrame();
+		frame.setBounds(width, height, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
+		
+		JButton btnNewButton = new JButton("Close");
+	
+		btnNewButton.setBounds(170, 117, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+	
+		btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		randomize();
+		frame.dispose();
+		initialize();
+		}
+	});
+}
+}
